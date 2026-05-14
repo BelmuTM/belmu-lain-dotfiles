@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/belmu/Images/5zbH8Yq.jpeg"
+let background = "#010000"
+let foreground = "#dcbfbd"
+let cursor     = "#dcbfbd"
+
+" Colors
+let color0  = "#010000"
+let color1  = "#9D586A"
+let color2  = "#938771"
+let color3  = "#BE6C80"
+let color4  = "#CE768B"
+let color5  = "#E17E97"
+let color6  = "#BFAD8C"
+let color7  = "#dcbfbd"
+let color8  = "#9a8584"
+let color9  = "#9D586A"
+let color10 = "#938771"
+let color11 = "#BE6C80"
+let color12 = "#CE768B"
+let color13 = "#E17E97"
+let color14 = "#BFAD8C"
+let color15 = "#dcbfbd"

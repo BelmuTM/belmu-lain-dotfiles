@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/belmu/.config/ml4w/cache/wallpaper-generated/blur1-default.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#081317",
+        "foreground": "#a1abaa",
+        "cursor": "#a1abaa"
+    },
+    "colors": {
+        "color0": "#081317",
+        "color1": "#494339",
+        "color2": "#283D42",
+        "color3": "#344A4D",
+        "color4": "#44595A",
+        "color5": "#4C605F",
+        "color6": "#4A5F60",
+        "color7": "#a1abaa",
+        "color8": "#707776",
+        "color9": "#494339",
+        "color10": "#283D42",
+        "color11": "#344A4D",
+        "color12": "#44595A",
+        "color13": "#4C605F",
+        "color14": "#4A5F60",
+        "color15": "#a1abaa"
+    }
+}

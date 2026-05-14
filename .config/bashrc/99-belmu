@@ -1,0 +1,14 @@
+# ┌────────────────────────────────────────────────┐
+# │  ___   _   ___ _  _ ___  ___                   │
+# │ | _ ) /_\ / __| || | _ \/ __|                  │
+# │ | _ \/ _ \\__ \ __ |   / (__                   │
+# │ |___/_/ \_\___/_||_|_|_\\___|                  │
+# │                                                │
+# │                                                │
+# │ Author: Belmu - https://www.github.com/BelmuTM │
+# └────────────────────────────────────────────────┘
+
+export BELMU="$HOME/.config/belmu"
+export BELMU_SCRIPTS="$BELMU/scripts"
+export BELMU_SETTINGS="$BELMU/settings"
+export BELMU_WALLPAPERS="$BELMU/wallpapers"

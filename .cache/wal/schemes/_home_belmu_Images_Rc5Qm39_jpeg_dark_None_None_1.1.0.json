@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/belmu/Images/Rc5Qm39.jpeg",
+    "alpha": "100",
+    "special": {
+        "background": "#000000",
+        "foreground": "#ddbebe",
+        "cursor": "#ddbebe"
+    },
+    "colors": {
+        "color0": "#000000",
+        "color1": "#9F5869",
+        "color2": "#C16A7E",
+        "color3": "#B3807E",
+        "color4": "#BF7A81",
+        "color5": "#CF7688",
+        "color6": "#BE8985",
+        "color7": "#ddbebe",
+        "color8": "#9a8585",
+        "color9": "#9F5869",
+        "color10": "#C16A7E",
+        "color11": "#B3807E",
+        "color12": "#BF7A81",
+        "color13": "#CF7688",
+        "color14": "#BE8985",
+        "color15": "#ddbebe"
+    }
+}

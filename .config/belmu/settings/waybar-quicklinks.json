@@ -1,0 +1,34 @@
+{
+    "custom/quicklink1": {
+        "format": "",
+        "on-click": "source ~/.config/belmu/scripts/browser.sh",
+        "tooltip-format": "Open Browser"
+    },
+    "custom/quicklink2": {
+        "format": "",
+        "on-click": "source ~/.config/belmu/scripts/filemanager.sh",
+        "tooltip-format": "Open File Manager"
+    }, 
+    "custom/quicklink3": {
+        "format": "",
+        "on-click": "/usr/bin/discord",
+        "tooltip-format": "Open Discord"
+    }, 
+    "custom/quicklink4": {
+        "format": "",
+        "on-click": "spotify-launcher",
+        "tooltip-format": "Open Spotify"
+    }, 
+    "custom/quicklinkempty": {
+    }, 
+    "group/quicklinks": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/quicklink1",
+            "custom/quicklink2",
+            "custom/quicklink3",
+            "custom/quicklink4",
+            "custom/quicklinkempty"
+        ]
+    }
+}

@@ -1,0 +1,21 @@
+set $wallpaper /home/belmu/Images/5zbH8Yq.jpeg
+
+set $background #010000
+set $foreground #dcbfbd
+
+set $color0 #010000
+set $color1 #9D586A
+set $color2 #938771
+set $color3 #BE6C80
+set $color4 #CE768B
+set $color5 #E17E97
+set $color6 #BFAD8C
+set $color7 #dcbfbd
+set $color8 #9a8584
+set $color9 #9D586A
+set $color10 #938771
+set $color11 #BE6C80
+set $color12 #CE768B
+set $color13 #E17E97
+set $color14 #BFAD8C
+set $color15 #dcbfbd
