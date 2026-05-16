@@ -239,6 +239,7 @@ padding-top: 1px;
 padding-right: 12px;
 }
 
+#window,
 #custom-appmenu {
 color: @grey;
 font-size: 13px;

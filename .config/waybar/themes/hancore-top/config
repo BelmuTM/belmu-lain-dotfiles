@@ -36,7 +36,9 @@
         "hyprland/workspaces",
         "custom/separator",
         "idle_inhibitor",
-        "bluetooth"
+        "bluetooth",
+        "custom/separator",
+        "hyprland/window",
     ],
 
     // Modules Center

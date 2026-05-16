@@ -20,7 +20,7 @@ sleep 0.5
 # -----------------------------------------------------
 # Default theme: /THEMEFOLDER;/VARIATION
 # -----------------------------------------------------
-THEME_STYLE="/top-modern;/top-modern/dark"
+THEME_STYLE="/hancore-top;/hancore-top"
 
 # -----------------------------------------------------
 # Get current theme information from ~/.config/belmu/settings/waybar-theme.sh
@@ -39,7 +39,7 @@ IFS=';' read -ra arrThemes <<< "$THEME_STYLE"
 echo ":: Theme: ${arrThemes[0]}"
 
 if [ ! -f ~/.config/waybar/themes${arrThemes[1]}/style.css ]; then
-    THEME_STYLE="/top;/top/dark"
+    THEME_STYLE="/hancore-top;/hancore-top"
 fi
 
 # -----------------------------------------------------
