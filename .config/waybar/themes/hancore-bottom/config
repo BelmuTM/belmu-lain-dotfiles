@@ -1,0 +1,258 @@
+// ┌───────────────────────────────────────────────────────────────┐
+// │ __      __         _                _____ _                   │
+// │ \ \    / /_ _ _  _| |__  __ _ _ _  |_   _| |_  ___ _ __  ___  │
+// │  \ \/\/ / _` | || | '_ \/ _` | '_|   | | | ' \/ -_) '  \/ -_) │
+// │   \_/\_/\__,_|\_, |_.__/\__,_|_|     |_| |_||_\___|_|_|_\___| │
+// │               |__/                                            │
+// │                                                               │
+// │ Author: Belmu - https://www.github.com/BelmuTM                │
+// └───────────────────────────────────────────────────────────────┘
+
+{
+    "exclusive": true,
+    "reload_style_on_change": true,
+    "position": "bottom",
+    "mod": "dock",
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    "spacing": 0,
+
+    // Load Modules
+    "include": [
+        "~/.config/belmu/settings/waybar-quicklinks.json",
+        "~/.config/waybar/modules.json"
+    ],
+
+    // Modules Left
+    "modules-left": [
+        "custom/appmenu",
+        "custom/separator",
+        "group/quicklinks",
+        "custom/separator",
+        "hyprland/workspaces",
+        "custom/separator",
+        "idle_inhibitor",
+        "bluetooth"
+    ],
+
+    // Modules Center
+    "modules-center": [
+        "mpris"
+    ],
+
+    // Modules Right
+    "modules-right": [
+        "battery",
+        "custom/separator3",
+        "network",
+        "pulseaudio",
+        "group/hardware",
+        "custom/separator",
+        "custom/clock",
+        "custom/separator2",
+        "tray",
+        "custom/exit"
+    ],
+
+    // Workspaces
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
+        "disable-scroll": true,
+        "cursor": true,
+        "format": "{}",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "*": 5
+        }
+    },
+
+    // Separators
+    "custom/separator": {
+        "format": "|",
+        "tooltip": false
+    },
+    "custom/separator2": {
+        "exec": "sh -c 'count=$(busctl --user get-property org.kde.StatusNotifierWatcher /StatusNotifierWatcher org.kde.StatusNotifierWatcher RegisteredStatusNotifierItems | sed -n \"s/^as \\([0-9]\\+\\).*/\\1/p\"); if [ \"${count:-0}\" -gt 0 ]; then echo \"{\\\"text\\\":\\\"|\\\",\\\"class\\\":\\\"show\\\"}\"; else echo \" {\\\"text\\\":\\\"\\\",\\\"class\\\":\\\"hide\\\"}\"; fi'",
+        "return-type": "json",
+        "interval": 2
+    },
+    "custom/separator3": {
+        "exec": "sh -c '[ -d /sys/class/backlight ] && [ \"$(ls -A /sys/class/backlight 2>/dev/null)\" ] && ls /sys/class/power_supply 2>/dev/null | grep -q \"^BAT\" && echo \"|\"'",
+        "tooltip": false,
+        "interval": "once"
+    },
+
+    // Mpris
+    "mpris": {
+        "format": "  {dynamic}",
+        "format-paused": " {status_icon} {dynamic}",
+        "interval": 1,
+        "dynamic-order": ["artist", "position", "length"],
+        "dynamic-importance-order": ["position", "length", "artist"],
+        "tooltip-format": "{player} ({status}):\n{artist} - {title}",
+        "status-icons": {
+            "paused": "󰝛"
+        },
+        "ignored-players": ["firefox", "brave"]
+    },
+
+    // Clock — exec-based, toggles between time and date on left click
+    // Requires ~/.config/belmu/scripts/waybar-clock-toggle.sh
+    "custom/clock": {
+        "exec": "STATE=$XDG_RUNTIME_DIR/waybar-clock-mode; [ ! -f $STATE ] && echo time > $STATE; if [ \"$(cat $STATE)\" = 'time' ]; then date +'%H:%M %p' | tr '[:upper:]' '[:lower:]'; else date +'%a %d %b'; fi",
+        "interval": 1,
+        "signal": 1,
+        "tooltip": false,
+        "on-click": "bash ~/.config/belmu/scripts/waybar-clock-toggle.sh"
+    },
+
+    // Hardware group — 󰍛 icon, expands left to show CPU / RAM / Disk on hover
+    "group/hardware": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "hardware-child",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/hardware-icon",
+            "cpu",
+            "memory",
+            "disk"
+        ]
+    },
+
+    "custom/hardware-icon": {
+        "format": "󰍛",
+        "tooltip": false
+    },
+
+    // CPU — U+F4BB (nf-oct-cpu)
+    "cpu": {
+        "interval": 5,
+        "format": "\uf4bb {usage}%",
+        "tooltip-format": "CPU: {usage}%",
+        "on-click": "kitty -e btop",
+        "states": {
+            "warning": 50,
+            "critical": 80
+        }
+    },
+
+    // Memory — U+F85A (nf-fae-chip)
+    "memory": {
+        "interval": 5,
+        "format": "\uf85a {percentage}%",
+        "tooltip-format": "RAM: {used:0.1f}GB / {total:0.1f}GB",
+        "on-click": "kitty -e btop",
+        "states": {
+            "warning": 50,
+            "critical": 80
+        }
+    },
+
+    // Disk — U+F02CA (nf-md-harddisk)
+    "disk": {
+        "interval": 30,
+        "format": "󰋊 {percentage_used}%",
+        "tooltip-format": "Disk: {used} / {total}",
+        "path": "/",
+        "on-click": "kitty -e btop"
+    },
+
+    // Network
+    "network": {
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "format": "{ifname}",
+        "format-wifi": "{icon}   {signalStrength}%",
+        "format-ethernet": "󰌗  {ifname}",
+        "format-disconnected": "󰤮 Not connected",
+        "tooltip-format": " {ifname} via {gwaddri}",
+        "tooltip-format-wifi": "   {essid} ({signalStrength}%)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-disconnected": "Disconnected",
+        "interval": 3,
+        "max-length": 50,
+        "on-click": "kitty -e nmtui"
+    },
+
+    // Battery
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-charging": " {capacity}% {icon}",
+        "format-plugged": " {capacity}%",
+        "format-full": "󱊦 {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "format-alt": "{icon}  {time}",
+        "tooltip-format-discharging": "{timeTo}",
+        "tooltip-format-charging": "{timeTo}",
+        "interval": 5,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        }
+    },
+
+    // Volume
+    "pulseaudio": {
+        "format": "<span size='large'>{icon}</span> {volume}%",
+        "format-bluetooth": "<span size='large'>󰂱</span> {volume}%",
+        "format-bluetooth-muted": "<span size='large'>󰂱</span> muted",
+        "format-muted": "<span size='large'>󰝟</span> muted",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "max-volume": 100,
+        "scroll-step": 2,
+        "smooth-scrolling-threshold": 1,
+        "on-click": "pavucontrol",
+        "on-click-right": "pamixer -t"
+    },
+
+    // Bluetooth
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱 {num_connections}",
+        "format-off": "󰂲",
+        "format-no-controller": "",
+        "tooltip-format": "Bluetooth\nDevices connected: {num_connections}",
+        "interval": 30,
+        "on-click": "blueman-manager"
+    },
+
+    // Idle Inhibitor — left click toggles, right click locks
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "tooltip": true,
+        "tooltip-format-activated": "Stay Awake: ON 󱎴",
+        "tooltip-format-deactivated": "Stay Awake: OFF 󰶐",
+        "format-icons": {
+            "activated": "󱎴",
+            "deactivated": "󰶐"
+        },
+        "on-click-right": "hyprlock"
+    },
+
+    // System Tray
+    "tray": {
+        "icon-size": 16,
+        "spacing": 2
+    }
+}

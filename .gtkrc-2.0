@@ -2,7 +2,7 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/belmu/.gtkrc-2.0.mine"
-gtk-theme-name="Breeze-Dark"
+gtk-theme-name="Rosepine-B-LB-Dark"
 gtk-icon-theme-name="Papirus-Dark"
 gtk-font-name="Noto Sans Medium 10"
 gtk-cursor-theme-name="Adwaita"

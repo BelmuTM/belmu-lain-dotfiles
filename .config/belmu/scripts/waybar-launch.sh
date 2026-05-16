@@ -49,14 +49,14 @@ CONFIG_FILE="config"
 STYLE_FILE="style.css"
 
 # Standard files can be overwritten with an existing config-custom or style-custom.css
-if [ -f ~/.config/waybar/themes${arrThemes[0]}/config-custom ]; then
+if [ -f "$HOME/.config/waybar/themes${arrThemes[0]}/config-custom" ]; then
     CONFIG_FILE="config-custom"
 fi
-if [ -f ~/.config/waybar/themes${arrThemes[1]}/style-custom.css ]; then
+if [ -f "$HOME/.config/waybar/themes${arrThemes[1]}/style-custom.css" ]; then
     STYLE_FILE="style-custom.css"
 fi
 
 # Check if waybar-disabled file exists
 if [ ! -f "$HOME/.config/belmu/settings/waybar-disabled" ]; then
-    waybar -c ~/.config/waybar/themes${arrThemes[0]}/$CONFIG_FILE -s ~/.config/waybar/themes${arrThemes[1]}/$STYLE_FILE &
+    waybar -c "$HOME/.config/waybar/themes${arrThemes[0]}/$CONFIG_FILE" -s "$HOME/.config/waybar/themes${arrThemes[1]}/$STYLE_FILE" &
 fi
