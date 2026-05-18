@@ -36,7 +36,6 @@
         "hyprland/workspaces",
         "custom/separator",
         "idle_inhibitor",
-        "bluetooth",
         "custom/separator",
         "hyprland/window",
     ],
@@ -50,10 +49,12 @@
     "modules-right": [
         "battery",
         "custom/separator3",
+        "bluetooth",
         "network",
         "pulseaudio",
         "group/hardware",
         "custom/separator",
+        "custom/hyprsunset",
         "custom/clock",
         "custom/separator2",
         "tray",
@@ -116,6 +117,19 @@
         "signal": 1,
         "tooltip": false,
         "on-click": "bash ~/.config/belmu/scripts/waybar-clock-toggle.sh"
+    },
+
+    // Hyprsunset — screen color temperature control
+    // Left click cycles through presets, scroll up/down nudges ±100K, right click resets to 6500K
+    // Requires ~/.config/belmu/scripts/waybar-hyprsunset.sh
+    "custom/hyprsunset": {
+        "exec": "STATE=$HOME/.config/belmu/state/hyprsunset-temp; [ ! -f \"$STATE\" ] && echo 6500 > \"$STATE\"; TEMP=$(cat \"$STATE\"); echo \"󰔏 ${TEMP}K\"",
+        "interval": 2,
+        "tooltip-format": "Screen Temperature: {text}\nLeft click: cycle presets\nScroll: ±100K\nRight click: reset to 6500K",
+        "on-click": "bash ~/.config/belmu/scripts/waybar-hyprsunset.sh toggle",
+        "on-click-right": "bash ~/.config/belmu/scripts/waybar-hyprsunset.sh reset",
+        "on-scroll-up": "bash ~/.config/belmu/scripts/waybar-hyprsunset.sh up",
+        "on-scroll-down": "bash ~/.config/belmu/scripts/waybar-hyprsunset.sh down"
     },
 
     // Hardware group — 󰍛 icon, expands left to show CPU / RAM / Disk on hover

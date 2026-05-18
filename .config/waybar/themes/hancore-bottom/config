@@ -36,7 +36,6 @@
         "hyprland/workspaces",
         "custom/separator",
         "idle_inhibitor",
-        "bluetooth",
         "custom/separator",
         "hyprland/window",
     ],
@@ -50,6 +49,7 @@
     "modules-right": [
         "battery",
         "custom/separator3",
+        "bluetooth",
         "network",
         "pulseaudio",
         "group/hardware",

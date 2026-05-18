@@ -172,6 +172,7 @@ transition: all 0.25s ease;
 #bluetooth,
 #pulseaudio,
 #disk,
+#custom-hyprsunset,
 #custom-clock,
 #custom-appmenu,
 #custom-hardware-icon {
@@ -212,6 +213,7 @@ padding: 0px 10px;
 #cpu:hover,
 #memory:hover,
 #disk:hover,
+#custom-hyprsunset:hover,
 #custom-appmenu:hover,
 #custom-exit:hover,
 #custom-hardware-icon:hover {
